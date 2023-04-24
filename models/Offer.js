@@ -42,25 +42,13 @@ const offerSchema = new mongoose.Schema({
         required: true
     },
     requirements: {
-        content: {
-            type: String,
-            required: true
+            content:String,
+            items:Array
         },
-        items: {
-            type: Array,
-            required: true
-        }
-    },
     role: {
-        content: {
-            type: String,
-            required: true
-        },
-        items: {
-            type: Array,
-            required: true
+            content:String,
+            items:Array
         }
-    },
 });
 
 module.exports = mongoose.model('Offer', offerSchema);

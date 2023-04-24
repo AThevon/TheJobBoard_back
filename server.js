@@ -5,7 +5,6 @@ const app = express();
 const mongoose = require('mongoose');
 
 const cors = require('cors');
-
 app.use(cors());
 
 mongoose.connect(process.env.MONGODB_URI, { 
@@ -19,7 +18,7 @@ db.once('open', () => console.log('Connected to database!'));
 
 app.use(express.json());
 
-const offersRouter = require('./routes/offers');
+const offersRouter = require('./router');
 app.use('/offers', offersRouter);
 
 app.listen(3001, () => console.log('Server started!'));
