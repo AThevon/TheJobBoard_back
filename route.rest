@@ -1,0 +1,54 @@
+GET http://localhost:3001/offers
+
+###
+
+GET http://localhost:3001/offers/644665a98dc551084565e456
+
+###
+
+POST http://localhost:3001/offers
+Content-Type: application/json
+
+{
+    "company": "Navistar International",
+    "logo": "https://i.postimg.cc/6Q53KRzK/ecflogo2.png",
+    "logoBackground": "#ffbe0b",
+    "position": "Forward Communications Strategist",
+    "contract": "full-time",
+    "location": "Nauru",
+    "website": "https://ni.org",
+    "apply": "https://ni.info",
+    "description": "pariatur est officia nulla velit nulla cupidatat culpa elit quis dolore ea amet voluptate cupidatat qui aliqua irure exercitation incididunt fugiat esse ex consequat irure consectetur proident veniam et fugiat officia excepteur sit id proident magna pariatur anim consequat esse enim reprehenderit sunt pariatur aliqua qui dolor aute non ex laboris nulla et ut consequat aliqua proident fugiat esse magna labore ea qui minim ut sint commodo non laborum nulla veniam ea pariatur velit sint nulla est aliqua nostrud id ex esse esse reprehenderit veniam non eu anim excepteur sint anim et cupidatat culpa cupidatat magna ad cillum non minim commodo sint ullamco tempor velit sint velit ullamco excepteur id sit",
+    "requirements": {
+        "content": "culpa eu non commodo consectetur id ea elit mollit est enim labore elit ex dolore mollit anim ut commodo commodo voluptate est veniam dolor non magna voluptate laboris esse incididunt enim sit elit eiusmod qui occaecat excepteur",
+        "items": [
+            "nostrud fugiat labore officia nisi",
+            "magna commodo voluptate proident reprehenderit ullamco aliqua aliquip",
+            "ipsum aliqua ad laborum occaecat ea elit sint exercitation laborum",
+            "aliquip mollit consequat duis ut elit irure commodo magna proident"
+        ]
+    },
+    "role": {
+        "content": "sint irure reprehenderit sunt duis consequat aliqua ea minim laborum enim in ipsum cupidatat minim velit non eiusmod dolor pariatur sunt adipisicing est occaecat labore pariatur quis proident Lorem cillum velit sunt aliquip cupidatat culpa",
+        "items": [
+            "laboris ea cillum anim duis irure tempor mollit magna dolore velit aliquip mollit",
+            "dolor ipsum ullamco ullamco cupidatat pariatur nostrud deserunt",
+            "velit excepteur in consequat laboris exercitation ex mollit voluptate dolore velit"
+        ]
+    }
+}
+
+
+###
+
+DELETE http://localhost:3001/offers/6446535aa941ce203afccfa4
+
+
+###
+
+PATCH http://localhost:3001/offers/644665a98dc551084565e456
+Content-Type: application/json
+
+{
+    "company": "COucou"
+}
