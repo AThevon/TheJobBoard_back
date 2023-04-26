@@ -19,6 +19,6 @@ db.once('open', () => console.log('Connected to database!'));
 app.use(express.json());
 
 const offersRouter = require('./router');
-app.use('/offers', offersRouter);
+app.use('/api', offersRouter);
 
 app.listen(3001, () => console.log('Server started!'));

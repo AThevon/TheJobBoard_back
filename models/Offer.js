@@ -51,4 +51,6 @@ const offerSchema = new mongoose.Schema({
         }
 });
 
+offerSchema.index({ position: "text", company: "text" });
+
 module.exports = mongoose.model('Offer', offerSchema);

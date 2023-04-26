@@ -23,35 +23,7 @@ const getOffer = (req, res) => {
 };
 
 
-// const createOffer = (req, res) => {
-//     const offer = new Offer({
-//         company: req.body.company,
-//         logo: req.body.logo,
-//         logoBackground: req.body.logoBackground,
-//         position: req.body.position,
-//         contract: req.body.contract,
-//         location: req.body.location,
-//         website: req.body.website,
-//         apply: req.body.apply,
-//         description: req.body.description,
-//         requirements: req.body.requirements,
-//         role: req.body.role
-//     });
-
-//     console.log(offer);
-
-//     offer
-//         .save()
-//         .then((offer) => {
-//             res.json(offer);
-//         })
-//         .catch((err) => {
-//             res.status(500).send(err.message);
-//         });
-// };
-
-
-const createOffer = (req, res) => {
+const createOffer = async (req, res) => {
     const offers = req.body;
 
     if (!offers) {
@@ -86,7 +58,7 @@ const createOffer = (req, res) => {
 };
 
 
-const updateOffer = (req, res) => {
+const updateOffer = async (req, res) => {
     Offer.findOneAndUpdate(
         { _id: req.params.id },
         {
@@ -128,6 +100,42 @@ const deleteOffer = (req, res) => {
 };
 
 
+const searchOffers = async (req, res) => {
+    const query = req.query.q;
+    const location = req.query.location;
+    const isFullTime = req.query.isFullTime === 'true';
+
+    const queryFormatted = new RegExp(query, 'i');
+    const locationFormatted = new RegExp(location, 'i');
+
+
+    const queryObject = {};
+
+    if (query) {
+        queryObject
+            .$or = [
+                { position: queryFormatted },
+                { company: queryFormatted }
+            ];
+    }
+
+    if (location) {
+        queryObject.location = locationFormatted;
+    }
+
+    if (isFullTime) {
+        queryObject.contract = 'full-time';
+    }
+
+    Offer.find(queryObject)
+        .then((offers) => {
+            res.json(offers);
+        })
+        .catch((err) => {
+            res.status(500).send(err.message);
+        });
+};
+
 
 module.exports = {
     getOffers,
@@ -135,5 +143,6 @@ module.exports = {
     createOffer,
     updateOffer,
     deleteOffer,
+    searchOffers
 };
 

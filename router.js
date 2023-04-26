@@ -1,23 +1,26 @@
 // Importation du module Router d'Express
 const router = require("express").Router();
 
-
 const {
     getOffers,
     getOffer,
     createOffer,
     updateOffer,
     deleteOffer,
+    searchOffers
 } = require("./controllers/Offer");
 
-router.get("/", getOffers);
+router.get("/offers", getOffers);
 
-router.get("/:id", getOffer);
+router.get("/search", searchOffers);
 
-router.post("/", createOffer);
+router.get("/offers/:id", getOffer);
 
-router.patch("/:id", updateOffer);
+router.post("/offers", createOffer);
 
-router.delete("/:id", deleteOffer);
+router.patch("/offers/:id", updateOffer);
+
+router.delete("/offers/:id", deleteOffer);
+
 
 module.exports = router;
