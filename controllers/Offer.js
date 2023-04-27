@@ -45,9 +45,7 @@ const createOffer = async (req, res) => {
     });
 
     try {
-        console.log('newOffer:', newOffer);
         const savedOffer = await newOffer.save();
-        console.log('savedOffer:', savedOffer);
         res.json(savedOffer);
     } catch (err) {
         res.status(500).send(err.message);
