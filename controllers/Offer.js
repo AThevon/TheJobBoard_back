@@ -24,37 +24,34 @@ const getOffer = (req, res) => {
 
 
 const createOffer = async (req, res) => {
-    const offers = req.body;
+    const offer = req.body;
 
-    if (!offers) {
+    if (!offer) {
         return res.status(400).send("Request body is missing");
     }
 
-    const promises = offers.map((offer) => {
-        const newOffer = new Offer({
-            company: offer.company,
-            logo: offer.logo,
-            logoBackground: offer.logoBackground,
-            position: offer.position,
-            contract: offer.contract,
-            location: offer.location,
-            website: offer.website,
-            apply: offer.apply,
-            description: offer.description,
-            requirements: offer.requirements,
-            role: offer.role
-        });
-
-        return newOffer.save();
+    const newOffer = new Offer({
+        company: offer.company,
+        logo: offer.logo,
+        logoBackground: offer.logoBackground,
+        position: offer.position,
+        contract: offer.contract,
+        location: offer.location,
+        website: offer.website,
+        apply: offer.apply,
+        description: offer.description,
+        requirements: offer.requirements,
+        role: offer.role
     });
 
-    Promise.all(promises)
-        .then((savedOffers) => {
-            res.json(savedOffers);
-        })
-        .catch((err) => {
-            res.status(500).send(err.message);
-        });
+    try {
+        console.log('newOffer:', newOffer);
+        const savedOffer = await newOffer.save();
+        console.log('savedOffer:', savedOffer);
+        res.json(savedOffer);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
 };
 
 
