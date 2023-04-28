@@ -18,7 +18,7 @@ router.get("/offers/:id", getOffer);
 
 router.post("/offers", createOffer);
 
-router.patch("/offers/:id", updateOffer);
+router.put("/offers/:id", updateOffer);
 
 router.delete("/offers/:id", deleteOffer);
 
