@@ -22,4 +22,4 @@ app.use(express.json());
 const offersRouter = require('./router');
 app.use('/api', offersRouter);
 
-app.listen(3001, () => console.log('Server started!'));
+app.listen(process.env.PORT, () => console.log('Server started!'));
