@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 
 app.use(cors());
 
-
 mongoose.connect(process.env.MONGODB_URI, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
@@ -22,4 +21,4 @@ app.use(express.json());
 const offersRouter = require('./router');
 app.use('/api', offersRouter);
 
-app.listen(process.env.PORT, () => console.log('Server started!'));
+app.listen(3001, () => console.log('Server started!'));
